@@ -1,18 +1,31 @@
-import React from "react";
-import { useState } from "react";
+
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import conf from "../assets/conf.jpg";
-
+import { v4 as uuidv4 } from 'uuid';
 import TopNav from "../components/TopNav";
 
 const JoinMeet = () => {
   const [RoomCode, setRoomCode] = useState("");
   const navigate = useNavigate();
+  
+  useEffect(() => {
+    if (RoomCode) {
+      navigate(`/room/${RoomCode}`);
+    }
+  }, [RoomCode, navigate]);
 
   const submitCode = (e) => {
     e.preventDefault();
     console.log(RoomCode);
     navigate(`/room/${RoomCode}`);
+  };
+
+  const generateRoomCode = (e) => {
+    
+    const newRoomCode = uuidv4();
+    setRoomCode(newRoomCode);
+    navigate(`/room/${newRoomCode}`);
   };
 
   return (
@@ -60,6 +73,14 @@ const JoinMeet = () => {
               className=" bg-blue-500 hover:bg-blue-400 duration-100 ease-out font-bold w-[5rem] md:w-[7rem] rounded-full py-[5px] md:py-[7px] mt-2 md:mt-4 "
             >
               Go
+            </button>
+
+            <button
+              type="button"
+              onClick={generateRoomCode}
+              className=" bg-green-500 hover:bg-green-400 duration-100 ease-out font-bold w-[10rem] md:w-[14rem] rounded-full py-[5px] md:py-[7px] mt-2 md:mt-4"
+            >
+              Create Random Room
             </button>
           </form>
         </div>

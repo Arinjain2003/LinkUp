@@ -6,7 +6,7 @@ import { UserContext } from '../user-context';
 import { useNavigate } from 'react-router-dom';
 import SignIn from '../assets/LoginRegister/images/signin-image.jpg'
 import { MdLock, MdEmail } from "react-icons/md";
-import {  toast } from 'react-toastify';
+
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -16,12 +16,14 @@ function Login() {
   const { setIsLoggedIn } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const handleSubmit = async (event,emailParam, passwordParam) => {
+  const handleSubmit = async (event) => {
     if (event) event.preventDefault();
 
-    const response = await api.post("/login", {  email: emailParam, password: passwordParam });
+    const response = await api.post("/login", {  email, password  });
     const user_id = response.data.user_id || false;
     const user = response.data.user || false;
+
+    console.log(response);
 
     try {
       if (user && user_id) {
@@ -30,29 +32,30 @@ function Login() {
 
         setIsLoggedIn(true);
         navigate('/');
-        alert("Login sucessful")
+      
 
       } else {
         const { message } = response.data;
         setError(true);
-       // setErrorMessage(message);
-        toast(message);
-        // setTimeout(() => {
-        //   setError(false);
-        //   setErrorMessage("");
-        // }, 2000);
+       setErrorMessage(message);
+       
+        setTimeout(() => {
+          setError(false);
+          setErrorMessage("");
+        }, 2000);
       }
     } catch (err) {
       setError(true);
       setErrorMessage("Error is " + err);
     }
   };
-  const handleDummyLogin = () => {
+  
+  const handleDummyLogin = (event) => {
+    event.preventDefault();
     const dummyEmail = "guest.dummy@gmail.com";
     const dummyPassword = "qwert";
     setEmail(dummyEmail);
     setPassword(dummyPassword);
-    handleSubmit(null, dummyEmail, dummyPassword);
   };
 
   return (
@@ -73,11 +76,12 @@ function Login() {
 
             <div className="signin-form">
               <h2 className="form-title">Log In</h2>
-              <Form onSubmit={handleSubmit}>
+              <Form on onSubmit={handleSubmit}>
                 <div className="form-group flex" style={{ justifyContent: "center" }}>
                   <label for="your_name"><MdEmail fontSize="large" /></label>
                     <input
                       className="ml-4 bg-white"
+                      value={email}
                     onChange={(event) => {
                       setEmail(event.target.value);
                     }}
@@ -91,6 +95,7 @@ function Login() {
                   <label for="your_pass"><MdLock fontSize="large" /></label>
                     <input
                       className="ml-4"
+                      value={password}
                     onChange={(event) => {
                       setPassword(event.target.value);
                     }}

@@ -5,7 +5,7 @@ import { createRoot } from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
-import { ToastContainer } from 'react-toastify';
+
 
 
 
@@ -18,9 +18,6 @@ root.render(
   <StrictMode  >
  
      <App />   
-     <ToastContainer
-    />
-
   </StrictMode>
 );
 

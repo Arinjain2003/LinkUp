@@ -1,6 +1,6 @@
-# EvoX App
+<!-- # LinkUp App
 
-Welcome to EvoX! This is a project hosted on [Render](https://evox-app.onrender.com) aimed at facilitating event management and participation. Below you'll find a brief overview of its features, installation instructions, API integrations, and contribution guidelines.
+Welcome to LinkUp! This is a project hosted on [Render](https://evox-app.onrender.com) aimed at facilitating event management and participation. Below you'll find a brief overview of its features, installation instructions, API integrations, and contribution guidelines.
 
 ## Features
 
@@ -101,4 +101,4 @@ To install and clone the library from [GitHub](https://github.com/Sru2003/EvoX),
     ```
     npm start
     ```
-   This will start the React app at `localhost:3000`.
+   This will start the React app at `localhost:3000`. -->
