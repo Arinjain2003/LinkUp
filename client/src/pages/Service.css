@@ -1,0 +1,60 @@
+/* Service.css */
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.main-heading {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.grid-three-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: #000;
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-img {
+  margin-bottom: 20px;
+  width: 200px;
+  height: auto;
+}
+
+.card-content {
+  width: 100%;
+  text-align: center;
+}
+
+.card-content p {
+  margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+  .grid-three-cols {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-three-cols {
+      grid-template-columns: 1fr;
+  }
+}
