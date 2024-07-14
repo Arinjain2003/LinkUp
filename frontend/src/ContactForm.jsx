@@ -7,7 +7,7 @@ const ContactForm = () => {
     const [eventInfo, setEventInfo] = useState({});
 
     const handleSendEmail = () => {
-        axios.post('https://evox.onrender.com/sendEmail', {
+        axios.post('https://linkup-v7ni.onrender.com/sendEmail', {
             toEmail: toEmail,
             eventInfo: event
         })
