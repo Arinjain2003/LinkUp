@@ -30,14 +30,7 @@ export default function Dashboard() {
     getEvents();
   }, []);
 
-  // const socket = useMemo(() =>
-  //   socketio('https://evox-app.onrender.com/', { query: { user: user_id } }),
-  //   [user_id]
-  // );
 
-  // useEffect(() => {
-  //   socket.on('registration_request', data => (setEventRequests([...eventRequests, data])));
-  // }, [eventRequests, socket]);
 
   
   
